@@ -1,0 +1,61 @@
+{
+  "projectId": "timemanagement-v1",
+  "entities": {
+    "Task": {
+      "path": "users/{userId}/tasks/{taskId}",
+      "fields": {
+        "id": "string",
+        "userId": "string",
+        "title": "string",
+        "description": "string",
+        "priority": "string",
+        "category": "string",
+        "tags": "array",
+        "dueDateMillis": "number?",
+        "isCompleted": "boolean",
+        "estimatedMinutes": "number",
+        "actualMinutes": "number",
+        "recurrence": "string",
+        "notes": "string",
+        "updatedAt": "number"
+      }
+    },
+    "CalendarEvent": {
+      "path": "users/{userId}/events/{eventId}",
+      "fields": {
+        "id": "string",
+        "userId": "string",
+        "title": "string",
+        "description": "string",
+        "category": "string",
+        "startTimeMillis": "number",
+        "endTimeMillis": "number",
+        "isAllDay": "boolean",
+        "colorHex": "string"
+      }
+    },
+    "Habit": {
+      "path": "users/{userId}/habits/{habitId}",
+      "fields": {
+        "id": "string",
+        "userId": "string",
+        "title": "string",
+        "currentStreak": "number",
+        "bestStreak": "number",
+        "completedDates": "array"
+      }
+    },
+    "StudySubject": {
+      "path": "users/{userId}/study_subjects/{subjectId}",
+      "fields": {
+        "id": "string",
+        "userId": "string",
+        "name": "string",
+        "nameSinhala": "string?",
+        "targetHours": "number",
+        "completedHours": "number",
+        "examDateMillis": "number?"
+      }
+    }
+  }
+}

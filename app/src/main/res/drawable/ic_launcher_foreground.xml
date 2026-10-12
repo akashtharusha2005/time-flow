@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer glowing clock ring -->
+    <path
+        android:strokeWidth="3"
+        android:strokeColor="#38BDF8"
+        android:fillColor="#00000000"
+        android:pathData="M54,28 A26,26 0 1,0 54,80 A26,26 0 1,0 54,28" />
+
+    <!-- Clock tick indicators -->
+    <path
+        android:strokeWidth="2.5"
+        android:strokeColor="#818CF8"
+        android:strokeLineCap="round"
+        android:pathData="M54,32 L54,36 M54,72 L54,76 M32,54 L36,54 M72,54 L76,54" />
+
+    <!-- Stylized Modern Hourglass Flow Core -->
+    <!-- Top bulb -->
+    <path
+        android:pathData="M40,38 L68,38 C68,46 58,51 54,54 C50,51 40,46 40,38 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="40"
+                android:startY="38"
+                android:endX="68"
+                android:endY="54"
+                android:type="linear">
+                <item android:color="#38BDF8" android:offset="0.0" />
+                <item android:color="#60A5FA" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Bottom bulb -->
+    <path
+        android:pathData="M54,54 C58,57 68,62 68,70 L40,70 C40,62 50,57 54,54 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="40"
+                android:startY="54"
+                android:endX="68"
+                android:endY="70"
+                android:type="linear">
+                <item android:color="#818CF8" android:offset="0.0" />
+                <item android:color="#C084FC" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Dynamic Flow Pulse at the waist -->
+    <path
+        android:pathData="M54,50 A4,4 0 1,0 54,58 A4,4 0 1,0 54,50"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Forward Fast-Forward / Flow Wings -->
+    <path
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:pathData="M48,54 L54,54 L58,49" />
+</vector>

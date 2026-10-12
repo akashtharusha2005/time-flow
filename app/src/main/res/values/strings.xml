@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">TIMEFLOW</string>
+    <string name="firestore_database_id">(default)</string>
+    <string name="default_web_client_id">your_web_client_id.apps.googleusercontent.com</string>
+    
+    <!-- Auth & Demo -->
+    <string name="welcome_back">Welcome to TIMEFLOW</string>
+    <string name="auth_subtitle">Master your time, studies, and habits with AI</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="display_name">Display Name</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="try_demo_account">TRY DEMO ACCOUNT</string>
+    <string name="demo_badge">DEMO MODE</string>
+    <string name="demo_notice">Running with guest account. Data is preserved locally on this device.</string>
+    <string name="no_account">Don\'t have an account? Sign Up</string>
+    <string name="have_account">Already have an account? Sign In</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_tasks">Tasks</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_focus">Focus</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_goals">Goals</string>
+    <string name="nav_habits">Habits</string>
+    <string name="nav_study">Study</string>
+    <string name="nav_analytics">Analytics</string>
+    <string name="nav_notes">Notes</string>
+    <string name="nav_ai">AI Assistant</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Dashboard -->
+    <string name="greeting_morning">Good morning</string>
+    <string name="greeting_afternoon">Good afternoon</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="today_tasks">Today\'s Tasks</string>
+    <string name="completed">Completed</string>
+    <string name="pending">Pending</string>
+    <string name="overdue">Overdue</string>
+    <string name="focus_time_today">Focus Time</string>
+    <string name="study_time_today">Study Time</string>
+    <string name="productivity_score">Productivity</string>
+    <string name="quick_add_task">Quick Add</string>
+    <string name="start_focus">Start Focus</string>
+
+    <!-- Tasks -->
+    <string name="task_title">Task Title</string>
+    <string name="task_description">Description</string>
+    <string name="task_priority">Priority</string>
+    <string name="task_category">Category</string>
+    <string name="task_due_date">Due Date</string>
+    <string name="task_create">Create Task</string>
+    <string name="task_edit">Edit Task</string>
+    <string name="task_delete">Delete Task</string>
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
+    <string name="priority_urgent">Urgent</string>
+
+    <!-- Focus -->
+    <string name="focus_pomodoro">Pomodoro</string>
+    <string name="focus_short_break">Short Break</string>
+    <string name="focus_long_break">Long Break</string>
+    <string name="focus_start">Start</string>
+    <string name="focus_pause">Pause</string>
+    <string name="focus_resume">Resume</string>
+    <string name="focus_reset">Reset</string>
+
+    <!-- Study -->
+    <string name="study_planner">Study Planner</string>
+    <string name="subjects">Subjects</string>
+    <string name="topics">Topics</string>
+    <string name="exam_countdown">Exam Countdown</string>
+    <string name="days_left">days remaining</string>
+    <string name="ai_generate_study_plan">Generate AI Study Plan</string>
+
+    <!-- Habits & Goals -->
+    <string name="habits">Habits</string>
+    <string name="goals">Goals</string>
+    <string name="streak">Current Streak</string>
+    <string name="days">days</string>
+
+    <!-- Notes -->
+    <string name="notes">Notes</string>
+    <string name="note_title">Title</string>
+    <string name="note_content">Take a note…</string>
+
+    <!-- AI -->
+    <string name="ai_assistant_title">TIMEFLOW AI</string>
+    <string name="ai_hint">Ask AI to organize tasks, create study schedules, or break down goals…</string>
+    <string name="ai_send">Send</string>
+    <string name="ai_thinking">Thinking deeply…</string>
+
+    <!-- Settings -->
+    <string name="theme">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System Default</string>
+    <string name="language">Language</string>
+    <string name="language_en">English</string>
+    <string name="language_si">සිංහල (Sinhala)</string>
+    <string name="app_lock">App Lock</string>
+    <string name="data_export">Export Data (JSON/CSV)</string>
+    <string name="delete_account">Delete Account</string>
+</resources>

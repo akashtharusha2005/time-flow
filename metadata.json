@@ -1,0 +1,6 @@
+{
+  "name": "TIMEFLOW",
+  "description": "AI-powered productivity, study planning, and time management app with smart calendar, task manager, focus timer, and habit tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

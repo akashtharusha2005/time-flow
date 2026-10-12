@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">TIMEFLOW</string>
+    <string name="firestore_database_id">(default)</string>
+    <string name="default_web_client_id">your_web_client_id.apps.googleusercontent.com</string>
+    
+    <!-- Auth & Demo -->
+    <string name="welcome_back">TIMEFLOW වෙත සාදරයෙන් පිළිගනිමු</string>
+    <string name="auth_subtitle">AI මඟින් ඔබේ කාලය, අධ්‍යයනය සහ පුරුදු කළමනාකරණය කරන්න</string>
+    <string name="sign_in">ඇතුල් වන්න</string>
+    <string name="sign_up">ලියාපදිංචි වන්න</string>
+    <string name="sign_out">ඉවත් වන්න</string>
+    <string name="email">විද්‍යුත් තැපෑල</string>
+    <string name="password">මුරපදය</string>
+    <string name="confirm_password">මුරපදය තහවුරු කරන්න</string>
+    <string name="display_name">නම</string>
+    <string name="forgot_password">මුරපදය අමතකද?</string>
+    <string name="reset_password">මුරපදය යළි සකසන්න</string>
+    <string name="sign_in_with_google">Google මඟින් පිවිසෙන්න</string>
+    <string name="try_demo_account">නිරූපණ ගිණුමෙන් අත්හදා බලන්න</string>
+    <string name="demo_badge">නිරූපණ ප්‍රකාරය</string>
+    <string name="demo_notice">ආගන්තුක ගිණුමක් භාවිත කරයි. දත්ත මෙම උපාංගයේ සුරැකේ.</string>
+    <string name="no_account">ගිණුමක් නැද්ද? ලියාපදිංචි වන්න</string>
+    <string name="have_account">දැනටමත් ගිණුමක් තිබේද? ඇතුල් වන්න</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">මුල් පිටුව</string>
+    <string name="nav_tasks">කාර්යයන්</string>
+    <string name="nav_calendar">දින දර්ශනය</string>
+    <string name="nav_focus">අවධානය</string>
+    <string name="nav_profile">පැතිකඩ</string>
+    <string name="nav_goals">ඉලක්ක</string>
+    <string name="nav_habits">පුරුදු</string>
+    <string name="nav_study">අධ්‍යයනය</string>
+    <string name="nav_analytics">විශ්ලේෂණ</string>
+    <string name="nav_notes">සටහන්</string>
+    <string name="nav_ai">AI සහායක</string>
+    <string name="nav_settings">සැකසුම්</string>
+
+    <!-- Dashboard -->
+    <string name="greeting_morning">සුබ උදෑසනක්</string>
+    <string name="greeting_afternoon">සුබ දහවලක්</string>
+    <string name="greeting_evening">සුබ සැන්දෑවක්</string>
+    <string name="today_tasks">අද දින කාර්යයන්</string>
+    <string name="completed">සම්පූර්ණයි</string>
+    <string name="pending">ඉතිරිව ඇත</string>
+    <string name="overdue">කල් ඉකුත් වූ</string>
+    <string name="focus_time_today">අවධානය යොමු කළ කාලය</string>
+    <string name="study_time_today">අධ්‍යයන කාලය</string>
+    <string name="productivity_score">ඵලදායිතාව</string>
+    <string name="quick_add_task">ඉක්මන් එක් කිරීම</string>
+    <string name="start_focus">අවධානය ආරම්භ කරන්න</string>
+
+    <!-- Tasks -->
+    <string name="task_title">කාර්ය මාතෘකාව</string>
+    <string name="task_description">විස්තරය</string>
+    <string name="task_priority">ප්‍රමුඛතාව</string>
+    <string name="task_category">කාණ්ඩය</string>
+    <string name="task_due_date">නියමිත දිනය</string>
+    <string name="task_create">කාර්යයක් සාදන්න</string>
+    <string name="task_edit">කාර්යය සංස්කරණය</string>
+    <string name="task_delete">කාර්යය මකන්න</string>
+    <string name="priority_low">අඩු</string>
+    <string name="priority_medium">මධ්‍යම</string>
+    <string name="priority_high">ඉහළ</string>
+    <string name="priority_urgent">හදිසි</string>
+
+    <!-- Focus -->
+    <string name="focus_pomodoro">පොමොඩෝරෝ</string>
+    <string name="focus_short_break">කෙටි විවේකය</string>
+    <string name="focus_long_break">දිගු විවේකය</string>
+    <string name="focus_start">අරඹන්න</string>
+    <string name="focus_pause">විරාමය</string>
+    <string name="focus_resume">නැවත අරඹන්න</string>
+    <string name="focus_reset">මුල සිට</string>
+
+    <!-- Study -->
+    <string name="study_planner">අධ්‍යයන සැලසුම්කරු</string>
+    <string name="subjects">විෂයයන්</string>
+    <string name="topics">මාතෘකා</string>
+    <string name="exam_countdown">විභාග ගණනය</string>
+    <string name="days_left">දින ඉතිරිව ඇත</string>
+    <string name="ai_generate_study_plan">AI අධ්‍යයන සැලැස්මක් සාදන්න</string>
+
+    <!-- Habits & Goals -->
+    <string name="habits">පුරුදු</string>
+    <string name="goals">ඉලක්ක</string>
+    <string name="streak">දින මාලාව</string>
+    <string name="days">දින</string>
+
+    <!-- Notes -->
+    <string name="notes">සටහන්</string>
+    <string name="note_title">මාතෘකාව</string>
+    <string name="note_content">සටහනක් ලියන්න…</string>
+
+    <!-- AI -->
+    <string name="ai_assistant_title">TIMEFLOW AI</string>
+    <string name="ai_hint">කාර්යයන් සකස් කිරීමට, අධ්‍යයන සැලසුම් සෑදීමට AI ගෙන් විමසන්න…</string>
+    <string name="ai_send">යවන්න</string>
+    <string name="ai_thinking">ගැඹුරින් සිතමින් පවතී…</string>
+
+    <!-- Settings -->
+    <string name="theme">තේමාව</string>
+    <string name="theme_light">දීප්තිමත් (Light)</string>
+    <string name="theme_dark">අඳුරු (Dark)</string>
+    <string name="theme_system">පද්ධති තේමාව</string>
+    <string name="language">භාෂාව</string>
+    <string name="language_en">English</string>
+    <string name="language_si">සිංහල</string>
+    <string name="app_lock">යෙදුම් අගුල</string>
+    <string name="data_export">දත්ත අපනයනය (JSON/CSV)</string>
+    <string name="delete_account">ගිණුම මකන්න</string>
+</resources>

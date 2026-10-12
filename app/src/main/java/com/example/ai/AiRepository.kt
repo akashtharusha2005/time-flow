@@ -1,0 +1,141 @@
+package com.example.ai
+
+import com.example.BuildConfig
+import com.example.data.model.AiMessage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONArray
+import org.json.JSONObject
+import java.util.concurrent.TimeUnit
+
+class AiRepository {
+    private val client = OkHttpClient.Builder()
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .writeTimeout(60, TimeUnit.SECONDS)
+        .build()
+
+    private val jsonMediaType = "application/json; charset=utf-8".toMediaType()
+
+    suspend fun generateResponse(
+        prompt: String,
+        history: List<AiMessage> = emptyList(),
+        useHighThinking: Boolean = false,
+        modelType: String = if (useHighThinking) "gemini-3.1-pro-preview" else "gemini-3.5-flash",
+        language: String = "en"
+    ): Result<String> = withContext(Dispatchers.IO) {
+        val apiKey = try {
+            BuildConfig.GEMINI_API_KEY
+        } catch (e: Exception) {
+            ""
+        }
+
+        if (apiKey.isBlank() || apiKey == "MY_GEMINI_API_KEY") {
+            return@withContext Result.failure(
+                Exception("Gemini API key is not configured. Please add your key in the AI Studio Secrets panel.")
+            )
+        }
+
+        try {
+            val root = JSONObject()
+
+            // System instructions based on language
+            val systemPrompt = if (language == "si") {
+                "ඔබ TIMEFLOW ඵලදායිතා, අධ්‍යයන සැලසුම් සහ කාල කළමනාකරණ යෙදුමේ බුද්ධිමත් සහායකයා වේ. පරිශීලකයාගේ කාර්යයන්, ඉලක්ක, අධ්‍යයන කටයුතු සහ කාලසටහන් ප්‍රශස්ත කිරීමට සිංහලෙන් හෝ ඉංග්‍රීසියෙන් මඟ පෙන්වන්න. පිළිතුරු පැහැදිලි, ප්‍රායෝගික සහ ක්‍රියාකාරී විය යුතුය."
+            } else {
+                "You are TIMEFLOW AI, an expert productivity, study planner, and time management strategist. Help users plan realistic schedules, prioritize tasks using the Eisenhower Matrix, break down difficult study topics, and build lasting habits. Keep advice concise, actionable, and encouraging."
+            }
+
+            val sysInstructionObj = JSONObject()
+            val sysParts = JSONArray()
+            sysParts.put(JSONObject().put("text", systemPrompt))
+            sysInstructionObj.put("parts", sysParts)
+            root.put("systemInstruction", sysInstructionObj)
+
+            // Contents array
+            val contentsArray = JSONArray()
+
+            // Append history
+            history.takeLast(10).forEach { msg ->
+                val contentObj = JSONObject()
+                contentObj.put("role", if (msg.isUser) "user" else "model")
+                val parts = JSONArray()
+                parts.put(JSONObject().put("text", msg.content))
+                contentObj.put("parts", parts)
+                contentsArray.put(contentObj)
+            }
+
+            // Current prompt
+            val currentContent = JSONObject()
+            currentContent.put("role", "user")
+            val currentParts = JSONArray()
+            currentParts.put(JSONObject().put("text", prompt))
+            currentContent.put("parts", currentParts)
+            contentsArray.put(currentContent)
+
+            root.put("contents", contentsArray)
+
+            // Generation config
+            val genConfig = JSONObject()
+            genConfig.put("temperature", 0.7)
+
+            if (useHighThinking) {
+                val thinkingObj = JSONObject()
+                thinkingObj.put("thinkingLevel", "HIGH")
+                genConfig.put("thinkingConfig", thinkingObj)
+            }
+            root.put("generationConfig", genConfig)
+
+            val url = "https://generativelanguage.googleapis.com/v1beta/models/$modelType:generateContent?key=$apiKey"
+            val requestBody = root.toString().toRequestBody(jsonMediaType)
+
+            val request = Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build()
+
+            val response = client.newCall(request).execute()
+            val responseBody = response.body?.string()
+
+            if (!response.isSuccessful || responseBody == null) {
+                val errorMsg = try {
+                    val errJson = JSONObject(responseBody ?: "")
+                    errJson.optJSONObject("error")?.optString("message") ?: "API Error code ${response.code}"
+                } catch (_: Exception) {
+                    "Request failed with HTTP ${response.code}"
+                }
+                return@withContext Result.failure(Exception(errorMsg))
+            }
+
+            val resJson = JSONObject(responseBody)
+            val candidates = resJson.optJSONArray("candidates")
+            if (candidates == null || candidates.length() == 0) {
+                return@withContext Result.failure(Exception("No response generated by model"))
+            }
+
+            val firstCandidate = candidates.getJSONObject(0)
+            val content = firstCandidate.optJSONObject("content")
+            val parts = content?.optJSONArray("parts")
+            val textBuilder = StringBuilder()
+
+            if (parts != null) {
+                for (i in 0 until parts.length()) {
+                    val p = parts.getJSONObject(i)
+                    val t = p.optString("text")
+                    if (t.isNotBlank()) {
+                        textBuilder.append(t)
+                    }
+                }
+            }
+
+            val finalOutput = textBuilder.toString().ifBlank { "I was unable to formulate a response. Please try again." }
+            Result.success(finalOutput)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+}

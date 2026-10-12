@@ -1,0 +1,83 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // User profile document
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+
+      // Tasks collection
+      match /tasks/{taskId} {
+        allow read: if isOwner(userId);
+        allow write: if isOwner(userId)
+          && request.resource.data.userId == userId
+          && request.resource.data.title is string
+          && request.resource.data.title.size() > 0
+          && request.resource.data.title.size() <= 200;
+      }
+
+      // Calendar Events collection
+      match /events/{eventId} {
+        allow read: if isOwner(userId);
+        allow write: if isOwner(userId)
+          && request.resource.data.userId == userId
+          && request.resource.data.title is string
+          && request.resource.data.title.size() > 0;
+      }
+
+      // Habits collection
+      match /habits/{habitId} {
+        allow read: if isOwner(userId);
+        allow write: if isOwner(userId)
+          && request.resource.data.userId == userId
+          && request.resource.data.title is string
+          && request.resource.data.title.size() > 0;
+      }
+
+      // Goals collection
+      match /goals/{goalId} {
+        allow read: if isOwner(userId);
+        allow write: if isOwner(userId)
+          && request.resource.data.userId == userId
+          && request.resource.data.title is string;
+      }
+
+      // Study collection
+      match /study_subjects/{subjectId} {
+        allow read: if isOwner(userId);
+        allow write: if isOwner(userId)
+          && request.resource.data.userId == userId
+          && request.resource.data.name is string;
+      }
+
+      // Focus sessions log
+      match /focus_records/{recordId} {
+        allow read: if isOwner(userId);
+        allow write: if isOwner(userId)
+          && request.resource.data.userId == userId;
+      }
+
+      // Notes collection
+      match /notes/{noteId} {
+        allow read: if isOwner(userId);
+        allow write: if isOwner(userId)
+          && request.resource.data.userId == userId;
+      }
+    }
+
+    // Default deny all other paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
